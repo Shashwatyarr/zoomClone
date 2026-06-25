@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:zoom/screens/history_meeting_screen.dart';
+import 'package:zoom/screens/meeting_screen.dart';
 import 'package:zoom/utils/colors.dart';
 
 import '../widgets/home_meeting_button.dart';
@@ -18,7 +20,12 @@ class _HomeScreenState extends State<HomeScreen> {
       _currentIndex = page;
     });
   }
-
+  List<Widget> pages=[
+     MeetingScreen(),
+    const HistoryMeetingScreen(),
+    Text('Contacts'),
+    Text('Settings'),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,36 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
       ),
 
-      body: Column(
-        children: [
-          const SizedBox(height: 20,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              HomeMeetingButton(
-                onPressed: (){},
-                text: 'New Meeting',
-                icon: Icons.videocam,
-                ),
-              HomeMeetingButton(
-                onPressed: (){},
-                text: 'Join Meeting',
-                icon: Icons.add_box_rounded,
-              ),
-              HomeMeetingButton(
-                onPressed: (){},
-                text: 'Schedule',
-                icon: Icons.calendar_today,
-              ),
-              HomeMeetingButton(
-                onPressed: (){},
-                text: 'Share Screen',
-                icon: Icons.arrow_upward_rounded,
-              ),
-            ],
-          )
-        ],
-      ),
+      body: pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         backgroundColor: footerColor,
@@ -68,23 +46,19 @@ class _HomeScreenState extends State<HomeScreen> {
         type: BottomNavigationBarType.fixed,
         unselectedFontSize: 14,
         items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            label: 'Meet & Chat',
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'Meet & Chat'),
           BottomNavigationBarItem(
             icon: Icon(Icons.videocam),
             label: 'Meetings',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings_outlined),
-            label: 'Settings',
+            icon: Icon(Icons.phone),
+            label: 'Contacts',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
-            label: 'Profile',
+            icon: Icon(Icons.settings),
+            label: 'Settings',
           ),
-
         ],
       ),
     );
