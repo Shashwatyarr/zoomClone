@@ -37,6 +37,7 @@ dependencies:
   google_sign_in: ^7.0.0
   cupertino_icons: ^1.0.8
   jitsi_meet_flutter_sdk: ^11.6.0
+  intl: ^0.20.2
 
 dev_dependencies:
   flutter_test:

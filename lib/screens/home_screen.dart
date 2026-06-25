@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:zoom/resources/auth_methods.dart';
 import 'package:zoom/screens/history_meeting_screen.dart';
 import 'package:zoom/screens/meeting_screen.dart';
 import 'package:zoom/utils/colors.dart';
+import 'package:zoom/widgets/custom_button.dart';
 
 import '../widgets/home_meeting_button.dart';
 
@@ -14,17 +16,19 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
-
+  final AuthMethods _authMethods = AuthMethods();
   void onPageChanged(int page) {
     setState(() {
       _currentIndex = page;
     });
   }
-  List<Widget> pages=[
+  late List<Widget> pages=[
      MeetingScreen(),
     const HistoryMeetingScreen(),
     Text('Contacts'),
-    Text('Settings'),
+    CustomButton(text: 'Logout', onPressed: ()=>{
+      _authMethods.signOut(),
+    })
   ];
   @override
   Widget build(BuildContext context) {

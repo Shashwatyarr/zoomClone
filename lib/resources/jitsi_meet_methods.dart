@@ -1,11 +1,11 @@
 import 'package:jitsi_meet_flutter_sdk/jitsi_meet_flutter_sdk.dart';
 
 import 'auth_methods.dart';
-//import 'firestore_methods.dart';
+import 'firestore_methods.dart';
 
 class JitsiMeetMethods {
   final AuthMethods _authMethods = AuthMethods();
-  //final FirestoreMethods _firestoreMethods = FirestoreMethods();
+  final FirestoreMethods _firestoreMethods = FirestoreMethods();
 
   final JitsiMeet _jitsiMeet = JitsiMeet();
 
@@ -42,7 +42,7 @@ class JitsiMeetMethods {
         },
       );
 
-      //await _firestoreMethods.addToMeetingHistory(roomName);
+      await _firestoreMethods.addToMeetingHistory(roomName);
 
       await _jitsiMeet.join(options);
     } catch (e) {
